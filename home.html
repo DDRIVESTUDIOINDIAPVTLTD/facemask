@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>histocyte</title>
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <script
+      src="https://kit.fontawesome.com/c32adfdcda.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
+      body {
+        font-size: 16px;
+        line-height: 32px;
+        font-weight: 400;
+        -moz-osx-font-smoothing: grayscale;
+        word-break: break-word;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Kumbh Sans", sans-serif;
+        margin: 0;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        font-size: 100%;
+      }
+
+      *,
+      :after,
+      :before {
+        box-sizing: border-box;
+      }
+      header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 80px;
+      background-color: #318ebb00;
+      /* box-shadow: 0 0px 8px rgba(212, 212, 212, 0.4); */
+      z-index: 1000;
+    }
+    
+    .logo {
+      display: flex;
+      flex: 2;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
+      padding-left: 2rem;
+      padding-left: 4rem;
+    }
+
+    .logo__icon {
+      /* max-width: 100%; */
+      max-height: 100%;
+      height: 60px; /* Adjust height as needed */
+      width: auto; /* Maintain aspect ratio */
+    }
+    .menu {
+      display: flex;
+      flex: 2;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 2rem;
+      font-size: 2rem;
+      color: #FFF;
+      height: 80px;
+      line-height: 80px;
+    }
+
+      .creative-hero--section {
+        position: relative;
+        overflow: hidden;
+        height: 100vh;
+      }
+      .creative-hero--section .bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: cover;
+      }
+      .creative-hero--section .bg-overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 90%;
+        background-image: url(https://imgpanda.com/upload/ib/rn73B7bqty.png);
+        background-position: 0 0;
+        background-size: 56.5% 100%;
+        background-repeat: no-repeat;
+        animation: fadeIn 0.5s ease-in-out 0.3s forwards;
+      }
+      .auto-container {
+        max-width: 1310px;
+      }
+
+      .auto-container {
+        position: static;
+        padding: 0 15px;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+      }
+      .creative-hero--section .content-box {
+        position: relative;
+        max-width: 540px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        animation: fadeInUp 1s ease-in-out 0.6s forwards;
+      }
+      .creative-hero--section .content-box .hero-subtitle {
+        display: block;
+        font-size: 16px;
+        line-height: 22px;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        margin-bottom: 33px;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-in-out 0.6s forwards;
+      }
+      .creative-hero--section .content-box .hero-title {
+        color: #fff;
+        line-height: 1.1em;
+        letter-spacing: 3px;
+        text-transform: capitalize;
+        margin-bottom: 28px;
+        font-size: 60px;
+        font-weight: 600;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-in-out 0.9s forwards;
+      }
+      .creative-hero--section .content-box .hero-desc {
+        color: #fff;
+        margin-bottom: 40px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 32px;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-in-out 1.2s forwards;
+      }
+      .content-box .btn-box {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-in-out 1.6s forwards;
+      }
+      .content-box .btn-box .hero-cta {
+        position: relative;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 20px 40px;
+        font-weight: 600;
+        overflow: hidden;
+        color: #fff;
+        background: #134cb3;
+        letter-spacing: 0.8px;
+        border-radius: 7px;
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+      }
+
+      .content-box .btn-box .hero-cta:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        content: "";
+        border-radius: 7px;
+        transform: scaleX(0);
+        transform-origin: top right;
+        transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+        background-color: #fff;
+      }
+
+      .content-box .btn-box .hero-cta:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        color: #16243e;
+      }
+
+      .content-box .btn-box .hero-cta:hover:before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      .btn-box .hero-cta .cta-title {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .btn-box .hero-cta .cta-title i {
+        position: relative;
+        display: block;
+        margin-left: 10px;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 40px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      .sticky-footer {
+        position: fixed;
+        width: 100%;
+        background: #3333333b;
+        z-index: 999;
+        bottom: 0;
+      }
+      .sticky-footer .footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 10px;
+        padding-right: 15px;
+      }
+      .creditd a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .social ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0px;
+        column-gap: 10px;
+        align-items: center;
+      }
+      .social ul li a {
+        display: flex;
+        background: #fff;
+        height: 30px;
+        width: 30px;
+        border-radius: 4px;
+        align-items: center;
+        justify-content: center;
+      }
+      .social ul li a img {
+        max-width: 20px;
+      }
+      @media (max-width: 1080px) {
+        .creative-hero--section .bg-overlay {
+          background-image: none;
+          background-color: #49494999;
+          width: 100%;
+          mix-blend-mode: hard-light;
+        }
+      }
+      @media (max-width: 991px) {
+        .creative-hero--section {
+          padding: 130px 0px;
+        }
+
+        .creative-hero--section .content-box {
+          max-width: 100%;
+          text-align: center;
+          justify-content: end;
+        }
+      }
+      @media (max-width: 575px) {
+        .creative-hero--section .content-box .hero-title {
+          font-size: 24px;
+        }
+        .creative-hero--section .content-box .hero-desc {
+          font-size: 15px;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+      .logo {
+        padding-left: 1rem;
+      }
+
+      .logo__icon {
+        width: 100%;
+        height: 50%;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img class="logo__icon" src="assets/icons/logo.png" alt="Logo">
+      </div>
+      <div class="menu">
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+    </header>
+    <section class="creative-hero--section">
+      <div
+        class="bg bg-image"
+        style="background-image: url('img/About_us_img.jpg')"
+      ></div>
+      <div class="bg-overlay"></div>
+      <div class="auto-container">
+        <div class="content-box">
+          <h1 class="hero-title">
+            1st of its kind in Bengaluru; An exclusive histopathology centre
+          </h1>
+
+          <!-- <span class="hero-subtitle">Crafting digital</span> -->
+          <!-- <div class="hero-desc">
+                And In Order To Make A Business, Brand Advertising And Marketing Plays An Important Role. Similarly, In Making Cultivation Business A Brand, Good Slogans Are Necessary.
+            </div> -->
+
+          <div class="btn-box">
+            <a class="hero-cta" href="metaview.html">
+              <span class="cta-title"
+                >Try Out
+                <i class="fa fa-arrow-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="creditd">
+            <a href="#" title="histocyte">Why Choose histocyte?</a>
+          </div>
+          <div class="social">
+            <ul>
+              <li>
+                <a href="#" title="facebook"
+                  ><img
+                    src="assets/icons/facebook.png"
+                    alt="facebook"
+                /></a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  title="twitter"
+                >
+                  <img
+                    src="assets/icons/twitter.png"
+                    alt="twitter"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  title="youtube"
+                  ><img
+                    src="assets/icons/youtube.png"
+                    alt="youtube"
+                /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const postVideo = document.querySelectorAll(".post-video");
+      const videoPlayer = document.querySelectorAll(".video-player");
+      const post = document.querySelectorAll(".post");
+      let isPlaying = true;
+
+      postVideo.forEach((item, index) => {
+        item.loop = true;
+        item.autoBuffer = true;
+        videoPlayer[index].addEventListener("click", function () {
+          isPlaying ? pauseVideo(index) : playVideo(index);
+        });
+      });
+
+      function playVideo(index) {
+        postVideo[index].play();
+        isPlaying = true;
+      }
+
+      function pauseVideo(index) {
+        postVideo[index].pause();
+        isPlaying = false;
+      }
+
+      // like button
+      const likeBtn = document.querySelectorAll(".like-btn");
+      const likeBtnIcon = document.querySelectorAll(".like-icon");
+      const likeBtnNum = document.querySelectorAll(".like-number");
+      let isLiked = false;
+
+      likeBtn.forEach((item, index) => {
+        likeBtn[index].addEventListener("click", function () {
+          //changing like Number
+          let likeNum = Math.floor(likeBtnNum[index].innerText);
+          // change like button
+          isLiked ? unLikePost(index, likeNum) : likePost(index, likeNum);
+        });
+      });
+
+      function likePost(index, likeNum) {
+        isLiked = true;
+        likeBtnIcon[index].classList.replace("fa-heart-o", "fa-heart");
+        likeBtnNum[index].innerText = likeNum + 1;
+      }
+
+      function unLikePost(index, likeNum) {
+        isLiked = false;
+        likeBtnIcon[index].classList.replace("fa-heart", "fa-heart-o");
+        likeBtnNum[index].innerText = likeNum - 1;
+      }
+
+      // post comment box
+      const postComments = document.querySelectorAll(".post-comments");
+      const commentBtn = document.querySelectorAll(".comment-btn");
+      const commentClose = document.querySelectorAll(".close-comment");
+
+      postComments.forEach((item, index) => {
+        commentBtn[index].addEventListener("click", function () {
+          postComments[index].classList.add("open");
+        });
+
+        commentClose[index].addEventListener("click", function () {
+          postComments[index].classList.remove("open");
+        });
+      });
+
+      //add coments to post
+
+      const postCommentSendBtn = document.querySelectorAll(".send-btn");
+      const postCommentText = document.querySelectorAll(".post-comment-text");
+      const postCommentArea = document.querySelectorAll(".post-comments-area");
+
+      postCommentSendBtn.forEach((item, index) => {
+        if (postCommentText[index].value == "") {
+          window.addEventListener("keydown", (evnt) => {
+            if (evnt.keyCode == 13) submitComment();
+          });
+        }
+        postCommentSendBtn[index].addEventListener("click", function () {
+          if (postCommentText[index].value != "") {
+            const postComment = document.createElement("div");
+            const postCommentUser = document.createElement("div");
+            const postCommentContent = document.createElement("div");
+            const postCommentLikeBtn = document.createElement("div");
+
+            // postCommentUser
+            //adding class to postCommentUser
+            postCommentUser.setAttribute("class", "post-comment-user");
+            postCommentUser.classList.add("verified");
+            //creating child elements to postCommentUser
+            const postCommentUserImg = document.createElement("img");
+            postCommentUserImg.setAttribute("class", "post-comment-user-img");
+            postCommentUserImg.setAttribute(
+              "src",
+              "http://dankmemeryt.000webhostapp.com/wp-content/uploads/2020/12/logo.webp"
+            );
+            //appending to postCommentUser
+            postCommentUser.appendChild(postCommentUserImg);
+
+            //postCommentContent
+            // adding class to postCommentContent
+            postCommentContent.setAttribute("class", "post-comment-content");
+            //creating child elements to postCommentContent
+            const postCommentUserName = document.createElement("div");
+            const postCommentUserMsg = document.createElement("div");
+            postCommentUserName.setAttribute("class", "post-comment-user-name");
+            postCommentUserName.classList.add("verified");
+            postCommentUserName.innerHTML = "<a href='#'>theviralboy.ig</a>";
+            if (postCommentUserName == "verified") {
+              const postCommentUserVerifiedIcon = document.createElement(i);
+              postCommentUserVerifiedIcon.setAttribute(
+                "class",
+                "fa fa-check post-comment-user-verified"
+              );
+
+              postCommentUserName.appendChild(postCommentUserVerifiedIcon);
+            }
+            postCommentUserMsg.setAttribute("class", "post-comment-user-msg");
+            postCommentUserMsg.innerText = postCommentText[index].value;
+
+            //appending to postCommentContent
+            postCommentContent.appendChild(postCommentUserName);
+            postCommentContent.appendChild(postCommentUserMsg);
+
+            //postCommentLikeBtn
+            postCommentLikeBtn.setAttribute("class", "post-comment-like-btn");
+
+            const postCommentLikeBtnIcon = document.createElement("i");
+            postCommentLikeBtnIcon.setAttribute(
+              "class",
+              "fa fa-heart-o post-comment-like-icon"
+            );
+            const postCommentLikeNum = document.createElement("p");
+            postCommentLikeNum.setAttribute(
+              "class",
+              "post-comment-like-number"
+            );
+            postCommentLikeNum.innerText = 9;
+
+            //appending elements to postCommentLikeBtn
+            postCommentLikeBtn.appendChild(postCommentLikeBtnIcon);
+            postCommentLikeBtn.appendChild(postCommentLikeNum);
+
+            postComment.setAttribute("class", "post-comment");
+
+            postComment.appendChild(postCommentUser);
+            postComment.appendChild(postCommentContent);
+            postComment.appendChild(postCommentLikeBtn);
+            //appending comment into post comment
+            postCommentArea[index].appendChild(postComment);
+
+            //blanking out postCommentText
+            postCommentText[index].value = "";
+          }
+        });
+      });
+
+      // post comments like
+      const postCommentLikeBtn = document.querySelectorAll(
+        ".post-comment-like-btn"
+      );
+      const postCommentLikeIcon = document.querySelectorAll(
+        ".post-comment-like-icon"
+      );
+      const postCommentLikeNum = document.querySelectorAll(
+        ".post-comment-like-number"
+      );
+      let isPostCommentLiked = false;
+
+      postCommentLikeBtn.forEach((item, index) => {
+        postCommentLikeBtn[index].addEventListener("click", function () {
+          let num = Math.floor(postCommentLikeNum[index].innerText);
+          isPostCommentLiked
+            ? unLikePostComment(index, num)
+            : likePostComment(index, num);
+        });
+      });
+
+      function likePostComment(index, num) {
+        isPostCommentLiked = true;
+        num += 1;
+        postCommentLikeIcon[index].classList.replace("fa-heart-o", "fa-heart");
+        postCommentLikeIcon[index].classList.add("liked");
+        postCommentLikeNum[index].innerText = num;
+      }
+
+      function unLikePostComment(index, num) {
+        isPostCommentLiked = false;
+        num -= 1;
+        postCommentLikeIcon[index].classList.replace("fa-heart", "fa-heart-o");
+        postCommentLikeIcon[index].classList.remove("liked");
+        postCommentLikeNum[index].innerText = num;
+      }
+    </script>
+  </body>
+</html>
