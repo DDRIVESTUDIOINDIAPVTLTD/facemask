@@ -110,7 +110,7 @@
       }
 
       #demo-container {
-        width: 80%;
+        width: 100%;
         height: 100%;
         position: relative;
       }
@@ -228,7 +228,7 @@
         background-color: #333;
       } */
 
-      .controls {
+      /* .controls {
     justify-content: center;
     gap: 10px;
     bottom: 0;
@@ -242,20 +242,26 @@
     flex-wrap: nowrap;
     overflow-x: scroll;
     scroll-behavior: smooth;
-}
+} */
 
-      .control-button {
-        background-color: #444;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
+.contarols {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: scroll;
+    scroll-behavior: smooth;
+    gap: 10px;
       }
 
-      .control-button:hover {
-        background-color: #555;
+      .contarols img {
+        width: 40px;
+        margin: 20px 10px;
+        cursor: pointer;
+        transition: transform 0.5s;
+      }
+
+      .contarols .call-icon {
+        width: 70px;
       }
 
       @media (max-width: 768px) {
@@ -288,42 +294,40 @@
             </div>
         </div>
         <div class="content">
-            <div class="sidebar">
-                <a href="#"><img src="image/systems-connective-tissues-icon.png" alt="mobile prepaid"></a>
-                <a href="#"><img src="image/systems-muscles-icon.png" alt="mobile postpaid"></a>
-                <a href="#"><img src="image/content-body-students-img.png" alt="electricity"></a>
-                <a href="#"><img src="image/systems-brain-icon.png" alt="dth recharge"></a>
-            </div>
+            <!-- <div class="sidebar">
+                <a href="#"><img src="img/content-body-students-img.png" alt="mobile prepaid"></a>
+                <a href="#"><img src="img/systems-brain-icon.png" alt="mobile postpaid"></a>
+                <a href="#"><img src="img/systems-connective-tissues-icon.png" alt="electricity"></a>
+                <a href="#"><img src="img/content-body-students-img.png" alt="dth recharge"></a>
+            </div> -->
             <div id="demo-container">
                 <model-viewer
-                  src="model/Head.glb"
+                  src="/assets/model/Head.glb"
                   camera-controls
                   ar
                   ar-modes="scene-viewer webxr quick-look"
                   ios-src="https://dl.dropbox.com/s/d4dneta9o2c0021/Covid-19.usdz"
                 >
-                  <button slot="ar-button" id="ar-button">View in your space</button>
                   <div id="ar-prompt">
                     <img
                       src="https://modelviewer.dev/shared-assets/icons/hand.png"
                       alt="AR Prompt"
                     />
                   </div>
-                  <button id="ar-failure">AR is not tracking!</button>
+                  
                 </model-viewer>
             </div>
         </div>
-        <div class="controls">
-            <button class="control-button">Muscular Layers</button>
-            <button class="control-button">Views</button>
-            <button class="control-button">Transparency</button>
-            <button class="control-button">Center</button>
-            <button class="control-button">Isolate</button>
-            <button class="control-button">Hide Interface</button>
-            <button class="control-button">Multiselect</button>
-            <button class="control-button">Hide</button>
-            <button class="control-button">Undo</button>
-            <button class="control-button">Reset</button>
+        <div class="contarols">
+          <img src="img/content-body-students-img.png" alt="Chat" />
+          <img
+            src="img/systems-brain-icon.png"
+            alt="Disconnect"
+          />
+          <!-- <img src="https://i.postimg.cc/fyJH8G00/call.png" class="call-icon" alt="Call"> -->
+          
+          <img src="img/systems-connective-tissues-icon.png" alt="Mic" />
+          <img src="img/content-body-students-img.png" alt="Cast" />
         </div>
     </div>
 </body>
