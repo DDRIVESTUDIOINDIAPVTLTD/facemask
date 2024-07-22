@@ -308,12 +308,14 @@
                   ar-modes="scene-viewer webxr quick-look"
                   ios-src="https://dl.dropbox.com/s/d4dneta9o2c0021/Covid-19.usdz"
                 >
+                 <button slot="ar-button" id="ar-button">View in your space</button>
                   <div id="ar-prompt">
                     <img
                       src="https://modelviewer.dev/shared-assets/icons/hand.png"
                       alt="AR Prompt"
                     />
                   </div>
+                  <button id="ar-failure">AR is not tracking!</button>
                   
                 </model-viewer>
             </div>
