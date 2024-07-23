@@ -21,7 +21,7 @@
           this.morphTargetMeshes = [];
         }
         async init() {
-          const url = "assets/model/Head.glb";
+          const url = "model/Head.glb";
           const gltf = await new Promise((resolve) => {
             const loader = new GLTFLoader();
             loader.load(url, (gltf) => {
