@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Furnitures</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer-legacy.js"></script>
+</head>
+
+<body>
+    <header id="home">
+        <div class="container">
+            <div class="brand">
+                <img src="https://www.godrej.com/resources/logo.png"
+                    style="width: 100px" alt="Infinity Logo" />
+            </div>
+        </div>
+    </header>
+
+    <!-- CUSTOM JEWELRY -->
+    <section id="custom-sec">
+        <div class="container">
+            <div class="product-container">
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <small>&copy; 2025 Godrej Industries. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <script>
+        let products = null;
+
+        fetch('./products.json')
+            .then(response => response.json())
+            .then(data => {
+                products = data;
+                showDetail();
+            })
+            .catch(error => console.error('Error fetching products:', error));
+
+        function showDetail() {
+            const detail = document.querySelector('.product-container');
+            const productId = new URLSearchParams(window.location.search).get('id');
+            const thisProduct = products.find(value => value.name == productId);
+
+            if (!thisProduct) {
+                detail.innerHTML = '<p>Product not found.</p>';
+                return;
+            }
+
+            const modelPath = `./assets/${thisProduct.name}/Model/${thisProduct.name}.glb`;
+
+            const modelViewerElement = document.createElement('model-viewer');
+            modelViewerElement.setAttribute('src', modelPath);
+            modelViewerElement.setAttribute('camera-controls', '');
+            modelViewerElement.setAttribute('autoplay', '');
+            modelViewerElement.setAttribute('animation-name', '*');
+            modelViewerElement.setAttribute('ar', '');
+            modelViewerElement.setAttribute('ar-modes', 'scene-viewer webxr quick-look');
+            modelViewerElement.setAttribute('ios-src', thisProduct.iosSrc || 'https://example.com/placeholder.usdz');
+            // modelViewerElement.style.width = '100%';
+            // modelViewerElement.style.height = '500px';
+            modelViewerElement.classList.add('viewmodel');
+
+            const arButton = document.createElement('button');
+            arButton.setAttribute('slot', 'ar-button');
+            arButton.id = 'ar-button';
+            arButton.innerText = 'View in your space';
+
+            const arPrompt = document.createElement('div');
+            arPrompt.id = 'ar-prompt';
+            arPrompt.innerHTML = `<img src="https://modelviewer.dev/shared-assets/icons/hand.png" alt="AR Prompt">`;
+
+            const arFailure = document.createElement('button');
+            arFailure.id = 'ar-failure';
+            arFailure.innerText = 'AR is not tracking!';
+
+            modelViewerElement.appendChild(arButton);
+            modelViewerElement.appendChild(arPrompt);
+            modelViewerElement.appendChild(arFailure);
+            detail.appendChild(modelViewerElement);
+        }
+    </script>
+</body>
+
+</html>
