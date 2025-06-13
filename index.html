@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D Model Viewer</title>
-
-  <!-- Import model-viewer component -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-  <!-- Basic styles -->
-  <style>
-    html, body {
-      width: 100vw;
-      height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-
-    model-viewer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #ddd;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Infinity Golden Jewelry</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
-  <!-- 3D Model Viewer -->
-  <model-viewer
-    alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
-    src="https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
-    ar
-    ar-modes="webxr scene-viewer quick-look"
-    seamless-poster
-    shadow-intensity="1"
-    camera-controls>
-  </model-viewer>
+
+    <header id="home">
+        <div class="container">
+            <div class="brand">
+                <img src="https://www.godrej.com/resources/logo.png"
+                    style="width: 100px" alt="Infinity Logo" />
+            </div>
+        </div>
+    </header>
+
+    <!-- CUSTOM JEWELRY -->
+    <section class="section" id="custom-sec">
+        <div class="container">
+            <div class="section-head">
+                <h2>Latest Collections</h2>
+            </div>
+            <div class="collection-list">
+                <ul class="products-container">
+                </ul>
+            </div>
+        </div>
+        <div class="interaction-preview">
+            <div class="preview" data-target="p-1">
+                <i class="fas fa-times"></i>
+                <div id="product_viewer"></div>
+            </div>
+            <div class="preview" data-target="p-2">
+                <i class="fas fa-times"></i>
+                <div id="product_viewer"></div>
+            </div>
+            <div class="preview" data-target="p-3">
+                <i class="fas fa-times"></i>
+                <div id="product_viewer"></div>
+            </div>
+            <div class="preview" data-target="p-4">
+                <i class="fas fa-times"></i>
+                <div id="product_viewer"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <small>&copy; 2025 Godrej Industries. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <script>
+        let products = null;
+        fetch('./products.json')
+            .then(response => response.json())
+            .then(data => {
+                products = data;
+                addDataToHTML();
+            })
+
+        function addDataToHTML() {
+            let listProductHTML = document.querySelector('.products-container');
+            if (products != null)
+            {
+                products.forEach(product => {
+                    let newProduct = document.createElement('a');
+                    newProduct.className = "product";
+                    newProduct.href = './detail.html?id=' + product.name;
+                    newProduct.innerHTML =
+                        `<img class="default-img" src="./assets/${product.name}/Icon/${product.name}.png" alt="">
+                     <div class="list-head">${product.name}</div>`;
+                    listProductHTML.appendChild(newProduct);
+                });
+            }
+        }
+    </script>
+
 </body>
+
 </html>
